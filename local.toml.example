@@ -1,0 +1,5 @@
+# Optional development override; omit for the pinned remote SM8250 feed.
+[[source]]
+name = "sm8250"
+kind = "soc"
+local = "../UniXNU-sm8250-common"

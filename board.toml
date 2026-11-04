@@ -1,0 +1,51 @@
+schema_version = 2
+
+[board]
+example = false
+name = "umi"
+soc = "SM8250"
+soc_source = "sm8250"
+os_profile = "ipados-17.7.11-21H461"
+description = "Xiaomi Mi 10 standalone UniXNU bring-up"
+kit = "umi"
+
+[components]
+include = ["ArmDTPlatform", "ArmCpu", "SoftwareAES", "XnuPrelink", "DarwinBoot"]
+
+[kernel]
+defconfig = "umi_defconfig"
+config_fragments = ["arch:configs/common.config", "soc:configs/sm8250.config", "os:configs/ipados.config"]
+patch_series = ["arch:patches/xnu/series", "soc:patches/xnu/series", "os:patches/xnu/series", "device:patches/xnu/series"]
+
+[device_tree]
+source = "device:dts/board.dts"
+include_dirs = ["soc:dts"]
+
+[firmware]
+config = "umi"
+dsc = "Platforms/Xiaomi/umiPkg/umi.dsc"
+fd = "Build/umiPkg/{target}_CLANGPDB/FV/SILICIUM_UEFI.fd"
+packages = ["{uefi}/Platforms/Xiaomi", "{uefi}/Silicon/Qualcomm", "{uefi}/Silicon/Silicium", "{uefi}/Common/Mu", "{uefi}/Common/Mu_OEM_Sample", "{uefi}/Silicium-ACPI", "{tree}/package", "{tree}/drivers/DarwinBoot", "{edk2}", "{uefi}"]
+
+[firmware.defines]
+DEVICE_MODEL = "0"
+ENABLE_SECUREBOOT = "0"
+
+[payload]
+volume = "UMI"
+size_mib = 192
+loader = "firmware"
+title = "UniXNU — Xiaomi Mi 10"
+panic_screen = true
+kernel_args = ["-v", "serial=3", "debug=0x14e", "cpus=1"]
+
+[payload.adt]
+chip_id = "8011"
+unique_chip_id = "required"
+owned_memory_size = "0x20000000"
+
+[package]
+unixnu = "../UniXNU"
+
+[package.defconfig]
+"ipados-17.7.11-21H461" = "umi_defconfig"

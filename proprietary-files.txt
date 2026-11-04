@@ -1,0 +1,5 @@
+# Private inputs are not distributed in the device repository.
+# Firmware: UMI XBL modules under ../uefi-umi/Binaries/umi/
+# Full relative paths and SHA-256: ../uefi-umi/Platforms/Xiaomi/umiPkg/vendor-inputs.sha256
+# Firmware DTB SHA-256: reports/hardware-inputs.json
+# OS kernelcache SHA-256 and prelink inputs: reports/kernel-build.json

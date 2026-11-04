@@ -1,0 +1,28 @@
+{
+  "firmware_revision": "c51e1b73f6d2b730263de4fb328f93e019d67ad7",
+  "soc_revision": "511d2db74152ebe8dda9de31f1023bbbf77846a7",
+  "firmware_bytes": 3145728,
+  "firmware_result": "PASS",
+  "package_result": "PASS",
+  "device_boot_verified": false,
+  "smoke_boot_image": {
+    "kernel_sha256": "19ff120615a4fce6c7edd0c3a417aa29e87e13c72c2c2dbe2fecfcfed36653b0",
+    "ramdisk_bytes": 33554432,
+    "header_version": 1,
+    "kernel_address": "0x8000",
+    "tags_address": "0x1e00000",
+    "image_sha256": "a9d94ee7ebbb87b6d20fd51dd455994ed2a0bee758c461cfd88545c9dc2b2812",
+    "image_bytes": 35577856,
+    "fd_sha256": "b2ba563e5efd3a89d2b51b3fffc6e5a0c25568313fbcdf77d4d6e8abd6dff414",
+    "dtb_sha256": "e48ef15f2a6320c3b16a93e795e4231f8a693be2798dd1be0a5b9981ad1d046d",
+    "shim_bytes": 112,
+    "hardware_tested": false
+  },
+  "initial_device_test": {
+    "result": "FAIL",
+    "observation": "Fastboot accepts image; brief firmware text then reboot. User captured sleep callback registration failure status 0x8000000000000003. Source of reboot unconfirmed.",
+    "image_sha256": "40f3cda3d90b50976ab568e6c5de8c27a629593ca707c278e4825357bd49b340"
+  },
+  "device_observation": "User confirms reduced firmware reaches UniXNU menu and HelloPayload displays RESULT PASS 0 passed 0 failed. Basic EFI execution only; optional test count is zero.",
+  "efi_payload_launch_verified": true
+}

@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "enabled_cpus": 1,
+  "timer_hz": 19200000,
+  "gic": "v3",
+  "psci": "smc",
+  "adt_conversion": "PASS",
+  "device_boot": "not tested",
+  "stock_dtb_sha256": "e48ef15f2a6320c3b16a93e795e4231f8a693be2798dd1be0a5b9981ad1d046d"
+}

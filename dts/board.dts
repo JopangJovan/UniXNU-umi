@@ -1,0 +1,25 @@
+/dts-v1/;
+/include/ "sm8250.dtsi"
+
+/ {
+    model = "Xiaomi Mi 10 (UMI)";
+    compatible = "xiaomi,umi", "qcom,sm8250";
+
+    // Conservative contiguous bank from the stock memory/reg. The hole below
+    // 0xc0000000 and firmware/secure carveouts are outside this handoff range.
+    // DarwinBoot advertises only its allocated, owned window to XNU.
+    memory@c0000000 {
+        device_type = "memory";
+        reg = <0 0xc0000000 0 0xc0000000>;
+    };
+};
+
+// Keep secondary cores disabled until PSCI/GIC and per-core timer bring-up.
+&cpu0 { status = "okay"; unixnu,cluster-type = "E"; };
+&cpu1 { unixnu,cluster-type = "E"; };
+&cpu2 { unixnu,cluster-type = "E"; };
+&cpu3 { unixnu,cluster-type = "E"; };
+&cpu4 { unixnu,cluster-type = "P"; };
+&cpu5 { unixnu,cluster-type = "P"; };
+&cpu6 { unixnu,cluster-type = "P"; };
+&cpu7 { unixnu,cluster-type = "P"; };

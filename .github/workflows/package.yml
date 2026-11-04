@@ -1,0 +1,33 @@
+name: UMI host bring-up checks
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  hardware-description:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: UniXNU-umi
+      - uses: actions/checkout@v4
+        with:
+          repository: JopangJovan/UniXNU
+          ref: 0689b6821e392ee4b18b465f19a64370a4d73f29
+          path: UniXNU
+      - uses: actions/checkout@v4
+        with:
+          repository: JopangJovan/UniXNU-sm8250-common
+          ref: 511d2db74152ebe8dda9de31f1023bbbf77846a7
+          path: UniXNU-sm8250-common
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update && sudo apt-get install -y device-tree-compiler
+      - run: python3 UniXNU-umi/scripts/check-hardware.py
+      - run: python3 UniXNU/scripts/porting-record.py check --device UniXNU-umi
