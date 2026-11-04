@@ -34,5 +34,59 @@
     "0xc0000000"
   ],
   "enabled_cpus": 1,
-  "hardware_boot_verified": false
+  "hardware_boot_verified": false,
+  "ufs": {
+    "hardware_sources": {
+      "stock_dtb_sha256": "e48ef15f2a6320c3b16a93e795e4231f8a693be2798dd1be0a5b9981ad1d046d",
+      "vendor_kernel_tree": "../../workspace/xiaomi_sm8250",
+      "vendor_kernel_revision": "4ae1f1e4c89ce26c09846655da746e2e7cd38901",
+      "vendor_files": [
+        "arch/arm64/boot/dts/vendor/qcom/kona.dtsi",
+        "arch/arm64/boot/dts/vendor/qcom/xiaomi-sm8250-common.dtsi",
+        "arch/arm64/boot/dts/vendor/qcom/umi-sm8250.dtsi",
+        "include/dt-bindings/clock/qcom,gcc-kona.h"
+      ],
+      "vendor_files_have_local_changes": false
+    },
+    "host": {
+      "compatible": "qcom,ufshc",
+      "base": "0x1d84000",
+      "size": "0x3000",
+      "interrupt": "GIC_SPI 265, level-high",
+      "lanes_per_direction": 2,
+      "reference_clock_hz": 19200000,
+      "core_reset": "GCC_UFS_PHY_BCR"
+    },
+    "ice": {
+      "base": "0x1d90000",
+      "size": "0x8000"
+    },
+    "phy": {
+      "compatible": "qcom,ufs-phy-qmp-v4",
+      "base": "0x1d87000",
+      "size": "0xe00",
+      "phy_rail": "PM8150 L5",
+      "pll_rail": "PM8150 L9"
+    },
+    "clocks": [
+      {"name": "core_clk", "provider": "GCC", "id": 167},
+      {"name": "bus_aggr_clk", "provider": "GCC", "id": 6},
+      {"name": "iface_clk", "provider": "GCC", "id": 166},
+      {"name": "core_clk_unipro", "provider": "GCC", "id": 179},
+      {"name": "core_clk_ice", "provider": "GCC", "id": 170},
+      {"name": "ref_clk", "provider": "RPMH_CXO", "id": 0},
+      {"name": "tx_lane0_sync_clk", "provider": "GCC", "id": 178},
+      {"name": "rx_lane0_sync_clk", "provider": "GCC", "id": 176},
+      {"name": "rx_lane1_sync_clk", "provider": "GCC", "id": 177}
+    ],
+    "supplies": {
+      "vdd_hba": "ufs_phy_gdsc",
+      "vcc": "PM8150 L17",
+      "vccq": "PM8150 L6",
+      "vccq2": "PM8150 S4",
+      "vddp_ref_clk": "PM8150 L6"
+    },
+    "smmu_streams": "not declared in the stock UFS host node; UMI runtime mappings and context banks still need hardware capture",
+    "disable_lpm": "the UMI 4.19 overlay contains qcom,disable-lpm only in a commented block"
+  }
 }

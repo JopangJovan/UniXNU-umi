@@ -82,14 +82,14 @@ result = "Standalone board and firmware interfaces implemented; host checks docu
 id = "storage"
 status = "planned"
 components = []
-paths = ["drivers/ShengUfs", "scripts/*ufs*", "scripts/*storage*", "scripts/*userdata*", "scripts/*root*"]
-inputs = ["UMI storage hardware information from the stock DTB and extracted firmware; UniXNU OS ABI adaptation remains required."]
-configuration = ["storage: no peripheral driver enabled in the initial single-core bring-up."]
+paths = ["drivers/UmiUfs", "scripts/*ufs*", "scripts/*storage*", "scripts/*userdata*", "scripts/*root*"]
+inputs = ["Stock UMI DTB and local Xiaomi SM8250 4.19 source at ../../workspace/xiaomi_sm8250, revision 4ae1f1e4c89ce26c09846655da746e2e7cd38901; see reports/hardware-inputs.json."]
+configuration = ["UFSHCI 0x1d84000/0x3000, ICE 0x1d90000/0x8000, QMP-v4 PHY 0x1d87000/0xe00, two lanes and 19.2 MHz reference clock. No XNU UFS driver is selected yet."]
 procedure = ["Complete storage adaptation after CPU, timer and firmware handoff are device-qualified."]
-findings = ["storage: HakiOS hardware behavior is reference evidence only; no binary ABI compatibility assumed."]
+findings = ["The vendor 4.19 board source confirms the UMI Kona UFS register, clock, reset and rail wiring. Its UFS node does not declare SMMU stream IDs; qcom,disable-lpm is commented out. Do not reuse another board's stream IDs or SM8550 clock values."]
 completion = ["Host: register, clock, link and SMMU facts match the board inventory.", "Reads: SCSI capacity, GPT and known blocks are correct; OS/SystemOS windows stay within userdata.", "Root: the configured volume mounts and launchd starts. Persistence: writes survive reboot within the allocated Data region."]
-limits = ["storage: no standalone UniXNU hardware result yet."]
-next_action = ["Inspect the UniXNU storage interface and build a UMI-specific implementation without editing shared templates."]
+limits = ["No UMI runtime SMMU stream/context capture, native XNU UFS implementation, block read or root mount has been verified."]
+next_action = ["Continue XNU entry diagnosis; then implement UmiUfs in the device-owned source tree using the recorded 4.19 hardware facts."]
 evidence = []
 
 [[area]]

@@ -22,7 +22,9 @@ From ../UniXNU:
 ./unixnu bootimg --ramdisk /path/to/umi-smoke.fat
 ```
 
-The hardware and firmware build reports are committed; bulky local compiler logs are under the UniXNU output tree. The reduced firmware reaches the UniXNU menu on UMI (user observation). FAT initrd discovery and the HelloPayload EFI application launch succeed (RESULT PASS 0 passed 0 failed, with no optional checks requested). A source-built XNU image has reached kernel entry and passed timed checkpoints after MMU enable, initial platform setup, `kernel_startup_bootstrap`, `arm_vm_init`, `serial_init`, and KPRINTF startup. A later checkpoint did not return, so full kernel startup and userspace remain unverified; details are in `reports/kernel-bringup.json`.
+The hardware and firmware build reports are committed; bulky local compiler logs are under the UniXNU output tree. The reduced firmware reaches the UniXNU menu on UMI (user observation). FAT initrd discovery and the HelloPayload EFI application launch succeed (RESULT PASS 0 passed 0 failed, with no optional checks requested). Earlier source-built XNU diagnostics passed timed checkpoints after MMU enable, initial platform setup, `kernel_startup_bootstrap`, `arm_vm_init`, `serial_init`, and KPRINTF startup. The latest PAN and zone-profile image showed only the green handoff bar and console text, so it did not confirm a later XNU checkpoint. Full kernel startup and userspace remain unverified; details are in `reports/kernel-bringup.json`.
+
+The original Xiaomi SM8250 4.19 tree at `../../workspace/xiaomi_sm8250` is the hardware reference; the separate mainline tree is not bootable and is not used for this port. UFS register, clock and rail facts from the 4.19 DTS are recorded in `reports/hardware-inputs.json`. The 4.19 checkout was not modified.
 
 The iPadOS 17.7.11 static and cryptex trust caches have been bundled locally without modification. Their bundle SHA-256 is `7416ca4f8377146626bb284e2133c76bee6cb4e3ee0af5d648b186235a7323a7`, matching the OS profile's allow-list. This alone does not provide the system volume or storage driver.
 

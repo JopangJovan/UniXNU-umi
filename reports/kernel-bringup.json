@@ -60,6 +60,14 @@
       "name": "guarded mapped-framebuffer marker and second platform checkpoint",
       "image_sha256": "d12743d295f14d756a002c6f75052721dd45abc9626a01e4a7eb2aab0d9528c5",
       "result": "User observed green, blue and magenta entry bars; no timed reset occurred. Console and second platform initialization remain unverified."
+    },
+    {
+      "name": "latest PAN and zone-profile boot",
+      "image_sha256": "45947525789e39b7ba89c73f30034d8ffcfc33a78491d053c880fa6c8a3e5cbe",
+      "boot_image_kernel_sha256": "2465d1364f61d1d4d137b974f4af2a72b4204d5701c7904fe08166fe348ae1d7",
+      "firmware_fd_sha256": "8d89657c25a23ef1b5e22a5532aa89b30fdf360daefff2a705b903c9238e58b9",
+      "dtb_sha256": "e48ef15f2a6320c3b16a93e795e4231f8a693be2798dd1be0a5b9981ad1d046d",
+      "result": "User reported only the green bar and some console text. This does not confirm a new XNU checkpoint; the kernel boot stage remains unresolved."
     }
   ],
   "scope": "These are temporary fastboot boot diagnostics. They do not prove a complete XNU boot, storage/root mount, or userspace startup."
