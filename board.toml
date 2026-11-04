@@ -36,7 +36,7 @@ volume = "UMI"
 size_mib = 192
 loader = "firmware"
 title = "UniXNU — Xiaomi Mi 10"
-panic_screen = true
+panic_screen = false
 kernel_args = ["-v", "serial=3", "debug=0x14e", "cpus=1"]
 
 [payload.adt]

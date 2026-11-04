@@ -10,7 +10,8 @@
     "change": "Set bit 0 of boot_args.Video.v_baseAddr to identify the GOP framebuffer as physical for XNU initialize_screen().",
     "firmware_fd_sha256": "8d89657c25a23ef1b5e22a5532aa89b30fdf360daefff2a705b903c9238e58b9",
     "build_result": "PASS",
-    "device_result": "pending"
+    "device_result": "Inconclusive: the grouped probe image booted, but the user reported only a green bar and suspected a display artifact; no kernel marker was confirmed.",
+    "diagnostic_boot_image_sha256": "d3442db7d529cb81e078f65358b03a29ac7c940414315fc3eb0e7ae7ab6517ce"
   },
   "smoke_boot_image": {
     "kernel_sha256": "19ff120615a4fce6c7edd0c3a417aa29e87e13c72c2c2dbe2fecfcfed36653b0",

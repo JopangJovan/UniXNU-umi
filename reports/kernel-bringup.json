@@ -49,7 +49,12 @@
     {
       "name": "physical-framebuffer handoff fix plus mapped-vinfo marker",
       "image_sha256": "97a225c9aa3b17d3645f79afccb06c457e95c7d2309cf7a208cc398e1d5ca279",
-      "result": "Built; hardware boot observation pending."
+      "result": "User tested it and reported only green; no XNU color markers were confirmed. Result is inconclusive."
+    },
+    {
+      "name": "physical-framebuffer handoff plus masked entry probes",
+      "image_sha256": "d3442db7d529cb81e078f65358b03a29ac7c940414315fc3eb0e7ae7ab6517ce",
+      "result": "User again reported only green and suspected a display artifact. XNU entry and framebuffer mapping remain unconfirmed."
     }
   ],
   "scope": "These are temporary fastboot boot diagnostics. They do not prove a complete XNU boot, storage/root mount, or userspace startup."
