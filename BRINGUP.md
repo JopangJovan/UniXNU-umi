@@ -24,6 +24,8 @@ From ../UniXNU:
 
 The hardware and firmware build reports are committed; bulky local compiler logs are under the UniXNU output tree. The reduced firmware reaches the UniXNU menu on UMI (user observation). FAT initrd discovery and the HelloPayload EFI application launch succeed (RESULT PASS 0 passed 0 failed, with no optional checks requested). A source-built XNU image has reached kernel entry and passed timed checkpoints after MMU enable, initial platform setup, `kernel_startup_bootstrap`, `arm_vm_init`, `serial_init`, and KPRINTF startup. A later checkpoint did not return, so full kernel startup and userspace remain unverified; details are in `reports/kernel-bringup.json`.
 
+The iPadOS 17.7.11 static and cryptex trust caches have been bundled locally without modification. Their bundle SHA-256 is `7416ca4f8377146626bb284e2133c76bee6cb4e3ee0af5d648b186235a7323a7`, matching the OS profile's allow-list. This alone does not provide the system volume or storage driver.
+
 ## Remaining sequence
 
 1. Verify the UMI framebuffer address is marked physical in DarwinBoot and XNU maps it for the console after MMU setup.

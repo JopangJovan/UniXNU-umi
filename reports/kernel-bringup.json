@@ -55,6 +55,11 @@
       "name": "physical-framebuffer handoff plus masked entry probes",
       "image_sha256": "d3442db7d529cb81e078f65358b03a29ac7c940414315fc3eb0e7ae7ab6517ce",
       "result": "User again reported only green and suspected a display artifact. XNU entry and framebuffer mapping remain unconfirmed."
+    },
+    {
+      "name": "guarded mapped-framebuffer marker and second platform checkpoint",
+      "image_sha256": "d12743d295f14d756a002c6f75052721dd45abc9626a01e4a7eb2aab0d9528c5",
+      "result": "User observed green, blue and magenta entry bars; no timed reset occurred. Console and second platform initialization remain unverified."
     }
   ],
   "scope": "These are temporary fastboot boot diagnostics. They do not prove a complete XNU boot, storage/root mount, or userspace startup."
