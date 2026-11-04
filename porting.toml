@@ -4,7 +4,7 @@ schema_version = 1
 name = "umi"
 soc = "SM8250"
 os_profile = "ipados-17.7.11-21H461"
-summary = "Standalone UniXNU migration. HakiOS results are reference evidence only; no UniXNU hardware boot verified."
+summary = "Standalone UniXNU migration. Early source-built XNU checkpoints are observed on UMI; full kernel boot remains incomplete. HakiOS results are reference evidence only."
 
 [[area]]
 id = "configuration"
@@ -34,7 +34,7 @@ configuration = ["FD 0x9fc00000 + 0x300000; 1080x2340 GOP; board-local SEC entry
 procedure = ["./unixnu firmware; ./unixnu package; ./unixnu bootimg --ramdisk <smoke FAT payload>."]
 findings = ["DEBUG firmware builds. The reduced module set reaches the UniXNU menu and launches HelloPayload on UMI. RESULT PASS 0 passed 0 failed confirms basic EFI launch only."]
 completion = ["firmware is complete only after its hardware checkpoints are recorded with source/image identities."]
-limits = ["Local vendor files are not distributed. Device menu, FAT initrd discovery and basic EFI launch are observed; XNU handoff remains unverified."]
+limits = ["Local vendor files are not distributed. Device menu, FAT initrd discovery, basic EFI launch, XNU entry and several early initialization checkpoints are observed; full kernel boot remains unverified."]
 next_action = ["Temporarily boot the standalone XNU diagnostic image and capture its last progress stage."]
 
 [[area.evidence]]
@@ -202,10 +202,10 @@ paths = ["BRINGUP.md", "reports/**"]
 inputs = ["Stock fastboot and user-observed UEFI screen output."]
 configuration = ["-v serial=3 debug=0x14e cpus=1 for initial XNU test."]
 procedure = ["Use adb reboot bootloader; use fastboot boot for temporary images."]
-findings = ["Firmware menu and basic EFI payload launch were observed on UMI. No device partitions were flashed."]
+findings = ["Firmware menu and basic EFI payload launch were observed on UMI. Timed source-built XNU probes reached MMU enable, initial platform setup, kernel startup, VM setup, serial initialization and KPRINTF startup. No device partitions were flashed."]
 completion = ["diagnostics is complete only after its hardware checkpoints are recorded with source/image identities."]
-limits = ["diagnostics: no standalone UniXNU hardware result yet."]
-next_action = ["Capture standalone XNU diagnostic boot output."]
+limits = ["A later early-platform checkpoint did not return; the full kernel and userspace remain unverified. See reports/kernel-bringup.json."]
+next_action = ["Verify the physical GOP framebuffer handoff and continue early XNU startup."]
 
 [[area.evidence]]
 kind = "source"

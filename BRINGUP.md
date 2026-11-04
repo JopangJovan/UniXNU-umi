@@ -22,16 +22,15 @@ From ../UniXNU:
 ./unixnu bootimg --ramdisk /path/to/umi-smoke.fat
 ```
 
-The hardware and firmware build reports are committed; bulky local compiler logs are under the UniXNU output tree. The reduced firmware reaches the UniXNU menu on UMI (user observation). FAT initrd discovery and the HelloPayload EFI application launch succeed (RESULT PASS 0 passed 0 failed, with no optional checks requested). XNU handoff is not verified.
+The hardware and firmware build reports are committed; bulky local compiler logs are under the UniXNU output tree. The reduced firmware reaches the UniXNU menu on UMI (user observation). FAT initrd discovery and the HelloPayload EFI application launch succeed (RESULT PASS 0 passed 0 failed, with no optional checks requested). A source-built XNU image has reached kernel entry and passed timed checkpoints after MMU enable, initial platform setup, `kernel_startup_bootstrap`, `arm_vm_init`, `serial_init`, and KPRINTF startup. A later checkpoint did not return, so full kernel startup and userspace remain unverified; details are in `reports/kernel-bringup.json`.
 
 ## Remaining sequence
 
-1. Test UniXNU menu and smoke EFI payload via temporary fastboot boot.
-2. Linux toolchain setup and Darwin 23 XNU build/prelink now pass; test its handoff after the EFI payload.
-3. Matching iPadOS 17.7.11 kernelcache and static trust input were obtained; OS root and persistent Data still need integration.
-4. Verify early kernel handoff, timer and owned-memory window; then enable secondary CPUs.
-5. Adapt storage/root and framebuffer before touch and GPU.
-6. Port UMI peripherals individually; the working HakiOS drivers are hardware references only.
+1. Verify the UMI framebuffer address is marked physical in DarwinBoot and XNU maps it for the console after MMU setup.
+2. Continue kernel startup beyond the second platform initialization and capture a useful panic or progress point.
+3. Integrate the iPadOS 17.7.11 kernelcache, trust data, storage/root, and persistent Data.
+4. Verify timer interrupts and owned-memory bounds; then enable secondary CPUs.
+5. Port UMI peripherals individually; the working HakiOS drivers are hardware references only.
 
 Use `adb reboot bootloader`, never `adb reboot fastboot`. Initial bring-up uses temporary boot images; no partition flashing. Do not use synthetic host-test identity values for an OS payload.
 

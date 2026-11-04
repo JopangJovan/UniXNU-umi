@@ -5,6 +5,13 @@
   "firmware_result": "PASS",
   "package_result": "PASS",
   "device_boot_verified": false,
+  "post_build_update": {
+    "darwinboot_revision": "810df2550015635076ecbe6823e159f7c1d3b578",
+    "change": "Set bit 0 of boot_args.Video.v_baseAddr to identify the GOP framebuffer as physical for XNU initialize_screen().",
+    "firmware_fd_sha256": "8d89657c25a23ef1b5e22a5532aa89b30fdf360daefff2a705b903c9238e58b9",
+    "build_result": "PASS",
+    "device_result": "pending"
+  },
   "smoke_boot_image": {
     "kernel_sha256": "19ff120615a4fce6c7edd0c3a417aa29e87e13c72c2c2dbe2fecfcfed36653b0",
     "ramdisk_bytes": 33554432,

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "device": "Xiaomi Mi 10 (UMI)",
+  "os_profile": "ipados-17.7.11-21H461",
+  "prelinked_kernel_sha256": "19ff120615a4fce6c7edd0c3a417aa29e87e13c72c2c2dbe2fecfcfed36653b0",
+  "dtb_sha256": "e48ef15f2a6320c3b16a93e795e4231f8a693be2798dd1be0a5b9981ad1d046d",
+  "flash_operations": 0,
+  "checkpoints": [
+    {
+      "name": "MMU enabled",
+      "image_sha256": "eb402483063d4638da0a9a7f708afad9b58e2b0fefca97ad385080d572f03d7f",
+      "result": "User observed the phone restart about six seconds after the entry bars."
+    },
+    {
+      "name": "first PE_init_platform returned",
+      "image_sha256": "a8d4a6bc123b976795fb4750a17419336c80e0ed4c3a263f4f1824db3de85047",
+      "result": "Device rebooted to Android after the configured post-call checkpoint."
+    },
+    {
+      "name": "kernel_startup_bootstrap returned",
+      "image_sha256": "5363b31396b941b76fe3a65d6ba9daff4e441256872e96cb47ff2bf58aaafd46",
+      "result": "Device rebooted to Android after the configured post-call checkpoint."
+    },
+    {
+      "name": "arm_vm_init returned",
+      "image_sha256": "f9f5ccb17ab62226e49dd69ae8e48bbf9905fcac55d45d19af651fff8eafcbaa",
+      "result": "Device rebooted to Android after the configured post-call checkpoint."
+    },
+    {
+      "name": "serial_init returned",
+      "image_sha256": "552b2ca3fb1a50a26cac81f18c658f64578aa8c64e39277e22a9ce31575b45fd",
+      "result": "Device rebooted to Android after the configured post-call checkpoint."
+    },
+    {
+      "name": "KPRINTF startup initializer returned",
+      "image_sha256": "099bd39a1dd98402db67b333790286bd6caeafa6df6f0fb852524acc89a637e9",
+      "result": "Device rebooted to Android after the configured post-call checkpoint."
+    },
+    {
+      "name": "second PE_init_platform returned",
+      "image_sha256": "e00ef51911d5da9f727e4788c62ad0076c9a34ad55a1d371e3147f4e156e679f",
+      "result": "No checkpoint reset; user saw the UniXNU/DarwinBoot text remain on screen."
+    },
+    {
+      "name": "post-console marker",
+      "image_sha256": "63c3f729df490d052731c9f52d49ea3a5f540754b5654bde0dd4bf3582d12544",
+      "result": "Inconclusive: the temporary marker used the raw GOP physical address after MMU setup."
+    },
+    {
+      "name": "physical-framebuffer handoff fix plus mapped-vinfo marker",
+      "image_sha256": "97a225c9aa3b17d3645f79afccb06c457e95c7d2309cf7a208cc398e1d5ca279",
+      "result": "Built; hardware boot observation pending."
+    }
+  ],
+  "scope": "These are temporary fastboot boot diagnostics. They do not prove a complete XNU boot, storage/root mount, or userspace startup."
+}
